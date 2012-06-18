@@ -1,0 +1,216 @@
+# E FE
+PARSE 0 -
+PARSE 1 -
+
+# E F
+PARSE 0 -
+
+# F TN(V)P
+LABEL 1 -
+SCOPE - -
+PARSE 2 -
+ASSIGN N 0
+PARSE 3 -
+RET N -
+ENDSCOPE - -
+
+# V <EMPTY>
+
+# V R
+PARSE 0 -
+
+# R N:T,R
+PARSE 2 -
+ASSIGN 0 1
+POP 0 -
+
+# R N:T
+ASSIGN 0 1
+POP 0 -
+
+# P {}
+
+# P {Q}
+SCOPE - -
+PARSE 0 -
+ENDSCOPE - -
+
+# Q C;
+PARSE 0 -
+
+# Q C;Q
+PARSE 0 -
+PARSE 1 -
+
+# Q W(X)P
+PARSE 1 -
+BLEZ 1 0
+PARSE 2 -
+LABEL - -
+
+# Q W(X)PUP
+PARSE 1 -
+BGTZ 1 0 
+PARSE 4 -
+J 1 -
+LABEL - -
+PARSE 2 -
+LABEL - -
+
+# Q L(X)P
+LABEL - -
+PARSE 1 -
+BLEZ 1 1
+PARSE 2 -
+J 0 -
+LABEL - -
+
+# Q W(X)PQ
+PARSE 1 -
+BLEZ 1 0
+PARSE 2 -
+LABEL - -
+PARSE 3 -
+
+# Q W(X)PUPQ
+PARSE 1 -
+BGTZ 1 0 
+PARSE 4 -
+J 1 -
+LABEL - -
+PARSE 2 -
+LABEL - -
+PARSE 5 -
+
+# Q L(X)PQ
+LABEL - -
+PARSE 1 -
+BLEZ 1 1
+PARSE 2 -
+J 0 -
+LABEL - -
+PARSE 3 -
+
+# C N=X
+PARSE 1 -
+ASSIGN 0 1
+
+# C TN
+ASSIGN 1 0
+
+# C GX
+PARSE 1 -
+RET 1 -
+
+# X (X)
+PARSE 0 -
+ASSIGN N 0
+
+# X N
+ASSIGN N 0
+
+# X I
+ASSIGN N 0
+
+# X J
+ASSIGN N 0
+
+# X X+X
+PARSE 0 -
+PARSE 1 -
+ASSIGN N 0
+ADD N 1
+
+# X X-X
+PARSE 0 -
+PARSE 1 -
+ASSIGN N 0
+SUB N 1
+
+# X X*X
+PARSE 0 -
+PARSE 1 -
+ASSIGN N 0
+MUL N 1
+
+# X X/X
+PARSE 0 -
+PARSE 1 -
+ASSIGN N 0
+DIV N 1
+
+# X X>X
+PARSE 0 -
+PARSE 1 -
+ASSIGN N 0
+SUB N 1
+BGTZ N 0
+ASSIGN N F
+J 1 -
+LABEL - -
+ASSIGN N T
+LABEL - -
+
+# X X<X
+PARSE 0 -
+PARSE 1 -
+ASSIGN N 0
+SUB N 1
+BLTZ N 0
+ASSIGN N F
+J 1 -
+LABEL - -
+ASSIGN N T
+LABEL - -
+
+# X X>=X
+PARSE 0 -
+PARSE 1 -
+ASSIGN N 0
+SUB N 1
+BGEZ N 0
+ASSIGN N F
+J 1 -
+LABEL - -
+ASSIGN N T
+LABEL - -
+
+# X X==X
+PARSE 0 -
+PARSE 1 -
+ASSIGN N 0
+SUB N 1
+BEQZ N 0
+ASSIGN N F
+J 1 -
+LABEL - -
+ASSIGN N T
+LABEL - -
+
+# X X<=X
+PARSE 0 -
+PARSE 1 -
+ASSIGN N 0
+SUB N 1
+BLEZ N 0
+ASSIGN N F
+J 1 -
+LABEL - -
+ASSIGN N T
+LABEL - -
+
+# X N(D)
+PARSE 1 -
+CALL 0 N
+
+# X N()
+CALL 0 N
+
+# D X,D
+PARSE 0 -
+PUSH 0 -
+PARSE 1 -
+
+# D X
+PARSE 0 -
+PUSH 0 -
