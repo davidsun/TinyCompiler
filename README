@@ -31,3 +31,5 @@ SCOPE - -       变量作用域开始
 SUB $0 $1       将$1所代表的变量减到$0所代表的变量上去
 
 The program you written is in program.txt. It will compile and run the program. Read main.cpp for more details.
+
+By Zheng Sun (http://pursuer.me)
