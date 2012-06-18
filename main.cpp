@@ -47,9 +47,6 @@ int main(void){
     fclose(f);
 
     vector <int> lra_result = lra.parse(la_result_str, true);
-    for (int i = 0; i < lra_result.size(); i ++){
-        printf("%d\n", lra_result[i]);
-    }
     CodeGenerator g;
     vector <string> ret = g.parse(lra, la_result, lra_result, code_items);
     for (int i = 0; i < ret.size(); i ++){

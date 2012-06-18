@@ -1,1 +1,33 @@
 A tiny compiler for simple programming languages.
+
+About the project:
+The framework
+ Lexical Analytics  -- >  LRAnalytics
+        |                       |
+        --->  CodeGenerator  <---
+                 |
+                 --> CodeRunner
+
+The definition of programming language is in input.txt. Currently, it supports following types of codes,
+ADD $0 $1       将$1所代表的变量加到$0所代表的变量上去
+ASSIGN $0 $1    将语法规则中第$1项所代表的内容（可以是数字、变量名、T或者F）赋值给$0所代表的变量1
+BEQZ $0 $1      判断$0所代表的变量是否等于0，如果是，跳转到标号为$1的标签
+BGEZ $0 $1      判断$0所代表的变量是否大于等于0，如果是，跳转到标号为$1的标签
+BGTZ $0 $1      判断$0所代表的变量是否大于0，如果是，跳转到标号为$1的标签
+BLEZ $0 $1      判断$0所代表的变量是否小于等于0，如果是，跳转到标号为$1的标签
+BLTZ $0 $1      判断$0所代表的变量是否小于0，如果是，跳转到标号为$1的标签
+CALL $0, $1     跳转到命名为语法规则中第$0项所代表的符号的标签，同时函数的运行结果保存到$1所代表的变量中
+DIV $0 $1       将$1所代表的变量除到$0所代表的变量上去
+ENDSCOPE - -    变量作用域结束
+J $0 -          跳转到标号为$0的标签
+LABEL - -       生成一个语法规则内的标签，标签将从0开始自动标号
+LABEL $0 -      生成命名为语法规则中第$0项所代表的符号的标签
+MUL $0 $1       将$1所代表的变量乘到$0所代表的变量上去
+PARSE $0 -      生成语法规则中第$0项所对应的代码
+PUSH $0 -       将$0所代表的变量放入栈中
+POP $0 -        将栈顶元素弹出，赋值给$0所代表的变量
+RET $0 -        在函数调用中，以$0所代表的变量为返回值退出此函数
+SCOPE - -       变量作用域开始
+SUB $0 $1       将$1所代表的变量减到$0所代表的变量上去
+
+The program you written is in program.txt. It will compile and run the program. Read main.cpp for more details.
